@@ -5,23 +5,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private float moveSpeed = 10;
     [SerializeField] private float jumpForce = 3;
     [SerializeField] private bool canDoubleJump;
     [SerializeField] private bool canWallJump;
 
-    private Rigidbody2D playerRb;
-    private SpriteRenderer playerSprite;
-    private Vector2 moveVec;
     private bool isGrounded;
     private bool isAtWall;
     private bool usedDoubleJump;
+    private Rigidbody2D playerRb;
+    private Vector2 moveVec;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -34,15 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         moveVec = context.ReadValue<Vector2>();
 
-        if (moveVec.x > 0)
-        {
-
-            playerSprite.flipX = true;
-        }
-        else if (moveVec.x < 0)
-        {
-            playerSprite.flipX = false;
-        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -91,5 +79,4 @@ public class PlayerController : MonoBehaviour
             isAtWall = false;
         }
     }
-
 }
