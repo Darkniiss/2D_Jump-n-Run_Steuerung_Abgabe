@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded)
+        if (isGrounded && context.performed)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
         }
